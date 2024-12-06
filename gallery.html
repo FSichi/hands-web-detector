@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Imágenes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <img src="https://i.ibb.co/7CMs3pZ/logo.png" alt="Mi Logo">
+        <ul class="menu">
+            <li><a href="index.html">Videocámara</a></li>
+            <li><a class="active">Galería de Capturas</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content-gallery">
+        <h1>Galería de Imágenes</h1>
+        <div class="image-gallery" id="gallery"></div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="imageModal">
+        <button class="modal-close" id="closeModal">&times;</button>
+        <img id="modalImage" alt="Imagen ampliada">
+    </div>
+
+    <script src="gallery.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const closeModal = document.getElementById('closeModal');
+
+            // Abrir el modal
+            const openModal = (src) => {
+                modalImage.src = src;
+                modal.classList.add('open');
+            };
+
+            // Cerrar el modal
+            const closeModalHandler = () => {
+                modal.classList.remove('open');
+                modalImage.src = '';
+            };
+
+            // Asociar eventos
+            closeModal.addEventListener('click', closeModalHandler);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModalHandler();
+            });
+
+            // Añadir evento a las imágenes
+            const gallery = document.getElementById('gallery');
+            gallery.addEventListener('click', (e) => {
+                if (e.target.tagName === 'IMG') {
+                    openModal(e.target.src);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

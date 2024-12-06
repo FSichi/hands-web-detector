@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detección de Manos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <img src="https://i.ibb.co/7CMs3pZ/logo.png" alt="Mi Logo">
+        <ul class="menu">
+            <li><a href="index.html">Videocámara</a></li>
+            <li><a class="active">Deteccion Espacial</a></li>
+            <li><a href="gallery.html">Galería de Capturas</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+
+    <div class="content">
+        <div id="video-container">
+            <video id="video" width="1920" height="1080" autoplay></video>
+            <canvas id="canvas" width="1920" height="1080"></canvas>
+            <!-- <video id="video" width="640" height="480" autoplay></video> -->
+            <!-- <canvas id="canvas" width="640" height="480"></canvas> -->
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands"></script>
+    <script src="hands_espacial.js"></script>
+</body>
+
+</html>
